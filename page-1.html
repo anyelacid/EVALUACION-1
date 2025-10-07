@@ -11,17 +11,17 @@
         <h1>Aves Chilenas</h1>
         <ul>
             <li><a href="index.html">Aves Chilenas</a></li>
-            <li><a href="page-1.html">Aves Cantoras</a></li>
+            <li><a href="page-1.html" class="active">Aves Cantoras</a></li>
             <li><a href="page-2.html">Aves Playeras</a></li>
             <li><a href="page-3.html">Aves Acuaticas de Pico Ancho</a></li>
-            <li><a href="page-4.html" class="active">Alcatraces y Piqueros</a></li>
+            <li><a href="page-4.html">Alcatraces y Piqueros</a></li>
             <li><a href="page-5.html">Aves Rapaces</a></li>
             <li><a href="page-6.html">Aves Rapaces Nocturnas</a></li>
         </ul>
     </nav>
     <div class="container">
-        <h2>Alcatraces y piqueros</h2>
-        <p>Los Pelecaniformes son un orden de aves de hábitos acuáticos y hábitos de vuelo diversos que comparten la particularidad de tener cuatro dedos unidos por membranas interdigitales.</p>
+        <h2>Aves Cantoras</h2>
+        <p>Los Passeriformes son el orden de aves más numeroso, conocido comúnmente como pájaros cantores o aves de percha, caracterizados por tener tres dedos hacia adelante y uno hacia atrás adaptados para sujetarse a ramas, lo que les permite posarse y dormir sin caerse.</p>
         <div class="grid" id="grid"></div>
     </div>
     <footer>
@@ -36,8 +36,8 @@
                 let data = await consulta.json();
                 console.log(data);
                 let conteo = 1;
-                data.forEach((a) => {
-                if(a.info.order.value.includes("Pelecaniformes")){                    
+                data.forEach((a)=>{
+                    if(a.info.order.value.includes("Passeriformes")){                    
                     grid.innerHTML += `
                         <div class="grid-item">
                             <img src="${a.image.url.replace("http://www.buscaves.cl/", "https://buscaves.cl/")}" alt="${a.names.spanish}"/>
@@ -46,7 +46,7 @@
                         </div>
                     `;
                     conteo++;
-                    };
+                    }
                 });
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
